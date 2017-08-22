@@ -48,9 +48,13 @@ def game_loop():
     x = (display_width * 0.35)
     y = (display_height * 0.8)
     x_change = 0
+    # from where the object start
     thing_startx = random.randrange(0, display_width)
+    # satrting position of object y
     thing_starty = -600
+    # moving speed of object
     thing_speed = 7
+    # width of object
     thing_width = 100
     thing_height = 100
     gameExit = False
@@ -84,6 +88,14 @@ def game_loop():
         if thing_starty > display_height:
             thing_starty = 0 - thing_height
             thing_startx = random.randrange(0,display_width)
+        # crash logic is here
+        if y < thing_starty+thing_height:
+            print('y crossover')
+            if x > thing_startx and x < thing_startx + thing_width or x+car_width >thing_startx and x+car_width < thing_startx+thing_width:
+                print('c crossover')
+                crash()
+
+
 
         pygame.display.update()
         # its no of frames per second we will change as fast we want to move
